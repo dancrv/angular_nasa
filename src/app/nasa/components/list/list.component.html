@@ -1,0 +1,16 @@
+<h4>Listado de cuerpos celestes</h4>
+<ul class="list-group">
+  <li
+    *ngFor="
+    let planet of planetList;
+    let i = index;"
+    class="list-group-item d-flex justify-content-between align-items-center p-4">
+    <div>
+      <strong>{{i + 1}}. </strong>
+      <strong>{{planet.name}}</strong>
+      <span> - Tamaño: </span>
+      <span>{{planet.size}}</span>
+    </div>
+    <button (click)="onDeletePlanet( planet.id )" class="btn btn-outline-danger">X</button>
+  </li>
+</ul>

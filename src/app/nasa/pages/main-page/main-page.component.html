@@ -1,0 +1,9 @@
+<div class="row container mx-auto gap-5 justify-content-center p-5">
+  <div class="col-md-4">
+    <nasa-add-planet (onNewPlanet)="onNewPlanet($event)"></nasa-add-planet>
+  </div>
+  <div class="col-md-4">
+    <nasa-list [planetList]="planets"
+               (onDelete)="onDeletePlanet($event)"></nasa-list>
+  </div>
+</div>

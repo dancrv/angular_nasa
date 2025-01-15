@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'NasaFont';
+  src: url('/assets/fonts/Nasa.woff') format('woff');
+}
+
+.bg-header {
+  border-bottom: 5px solid #cd3b27;
+  box-shadow: 0px 1px 25px black;
+  background: linear-gradient(to bottom right, #12408c, #021026);
+}
+
+.bg-header h1 {
+  font-family: 'NasaFont';
+  font-size: 3.2em;
+  filter: drop-shadow(5px 5px 3px black);
+}
+
+.bg-header img {
+  width: 100px;
+  filter: drop-shadow(5px 5px 15px black);
+}
