@@ -1,51 +1,43 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Planet } from '../interfaces/planets.interface';
-import { v4 as uuid } from 'uuid';
+import { NearEarthObject, SearchResponse } from './../interfaces/nasa.interface';
+import { AstroPic } from '../interfaces/astro-pic.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NasaService {
 
-  public planets: Planet[] = [
-    {
-      id: uuid(),
-      name: 'Mercurio',
-      size: 4.879
-    },
-    {
-      id: uuid(),
-      name: 'Venus',
-      size: 12.104
-    },
-    {
-      id: uuid(),
-      name: 'Tierra',
-      size: 12.756
-    },
-    {
-      id: uuid(),
-      name: 'Marte',
-      size: 6.779
-    },
-    {
-      id: uuid(),
-      name: 'Júpiter',
-      size: 139.820
-    },
-    {
-      id: uuid(),
-      name: 'Saturno',
-      size: 116.460
-    },
-  ]
+  public asteroidsList: NearEarthObject[] = [];
+  public astronomicPic!: AstroPic;
+  private _nasa_api_key: string = 'dIvfKcePlbRIpUd011ssmRUOdm6DqktdzP1j6Njk';
+  private _serviceUrl: string = 'https://api.nasa.gov/neo/rest/v1/neo/browse?';
+  private _serviceUrl2: string = 'https://api.nasa.gov/planetary/apod?';
 
-  addPlanet(planet: Planet): void {
-    const newPlanet: Planet = { id: uuid(), ...planet}
-    this.planets.push(newPlanet);
+  constructor(private http: HttpClient) {
+    this.searchAsteroids();
+    this.getAstronomicPic();
   }
 
-  deletePlanetById(id: string) {
-    this.planets = this.planets.filter(planet => planet.id != id);
+  searchAsteroids(): void {
+    const params = new HttpParams()
+      .set('api_key', this._nasa_api_key)
+    this.http.get<SearchResponse>(`${this._serviceUrl}`, {params})
+      .subscribe(resp => {
+        this.asteroidsList = resp.near_earth_objects;
+      })
+  }
+
+  deleteAsteroidById(id: string) {
+    this.asteroidsList = this.asteroidsList.filter(asteroid => asteroid.id != id);
+  }
+
+  getAstronomicPic(): void {
+    const params = new HttpParams()
+      .set('api_key', this._nasa_api_key)
+    this.http.get<AstroPic>(`${this._serviceUrl2}`, {params})
+      .subscribe(resp => {
+        this.astronomicPic = resp;
+      })
   }
 }

@@ -1,9 +1,17 @@
-<div class="row container mx-auto gap-5 justify-content-center p-5">
-  <div class="col-md-4">
-    <nasa-add-planet (onNewPlanet)="onNewPlanet($event)"></nasa-add-planet>
-  </div>
-  <div class="col-md-4">
-    <nasa-list [planetList]="planets"
-               (onDelete)="onDeletePlanet($event)"></nasa-list>
+<div class="row container mx-auto justify-content-center p-5">
+  <div class="row mb-5 d-flex justify-content-around">
+    <div class="row d-flex justify-content-evenly">
+      <button class="btn btn-custom-outline" routerLink="/picture">Foto astronómica del día</button>
+    </div>
+    <div class="col my-5 mx-3">
+      <nasa-list [asteroidsList]="asteroids"
+               (onDelete)="onDeleteAsteroid($event)"></nasa-list>
+    </div>
+    <div class="col my-5 mx-3">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
+
+
+

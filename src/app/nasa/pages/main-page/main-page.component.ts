@@ -1,27 +1,23 @@
 import { Component } from '@angular/core';
+import { NearEarthObject } from '../../interfaces/nasa.interface';
 import { NasaService } from '../../services/nasa.service';
-import { Planet } from '../../interfaces/planets.interface';
+import { AstroPic } from '../../interfaces/astro-pic.interface';
 
 @Component({
   selector: 'nasa-main-page',
   standalone: false,
-  templateUrl: './main-page.component.html'
+  templateUrl: './main-page.component.html',
+  styleUrl: './main-page.component.css'
 })
 
 export class MainPageComponent {
-  constructor(private nasaService: NasaService) {
+  constructor(private nasaService: NasaService) {}
 
+  get asteroids(): NearEarthObject[] {
+    return this.nasaService.asteroidsList;
   }
 
-  get planets(): Planet[] {
-    return [...this.nasaService.planets];
-  }
-
-  onNewPlanet(planet: Planet) {
-    this.nasaService.addPlanet(planet);
-  }
-
-  onDeletePlanet(id: string): void {
-    this.nasaService.deletePlanetById(id);
+  onDeleteAsteroid(id: string) {
+    this.nasaService.deleteAsteroidById(id);
   }
 }

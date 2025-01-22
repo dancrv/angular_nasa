@@ -1,1 +1,8 @@
+.table-wrapper {
+  max-height: 650px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  scrollbar-color: #12408c #f1f1f1;
+}
 

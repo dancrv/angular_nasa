@@ -1,6 +1,7 @@
 .btn-custom-outline {
   color: #12408c;
   border-color: #12408c;
+  max-width: 220px;
 }
 
 .btn-custom-outline:hover {

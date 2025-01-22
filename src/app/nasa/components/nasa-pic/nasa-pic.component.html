@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center my-auto">
+  <mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{ astroPic.title }}</mat-card-title>
+      <mat-card-subtitle>{{ astroPic.date }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="astroPic.url" [alt]="astroPic.title">
+    <mat-card-content class="p-3">
+      <p>{{ astroPic.explanation }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

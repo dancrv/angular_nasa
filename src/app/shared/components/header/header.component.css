@@ -19,3 +19,11 @@
   width: 100px;
   filter: drop-shadow(5px 5px 15px black);
 }
+
+.btn .btn-outline {
+  border-color: #12408c;
+}
+
+a {
+  text-decoration: none;
+}

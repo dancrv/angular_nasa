@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Planet } from '../../interfaces/planets.interface';
+import { NearEarthObject, OrbitingBody } from '../../interfaces/nasa.interface';
 
 @Component({
   selector: 'nasa-list',
@@ -10,16 +10,22 @@ import { Planet } from '../../interfaces/planets.interface';
 export class ListComponent {
 
   @Input()
-  public planetList: Planet[] = []
+  public asteroidsList: NearEarthObject[] = [];
+
+  getOrbitingBodyName(orbitingBody: string | null | undefined): string {
+    if (!orbitingBody) {
+      return 'Cuerpo orbital desconocido';
+    }
+    return OrbitingBody[orbitingBody as keyof typeof OrbitingBody] || orbitingBody;
+  }
 
   @Output()
   onDelete: EventEmitter<string> = new EventEmitter();
 
-  onDeletePlanet(id?: string): void {
+  onDeleteAsteroid(id?: string): void {
     if (!id) return;
-    
-    console.log(id);
 
     this.onDelete.emit(id);
   }
+
 }
