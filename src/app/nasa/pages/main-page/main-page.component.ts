@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NearEarthObject } from '../../interfaces/nasa.interface';
 import { NasaService } from '../../services/nasa.service';
-import { AstroPic } from '../../interfaces/astro-pic.interface';
 
 @Component({
   selector: 'nasa-main-page',
